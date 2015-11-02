@@ -29,6 +29,7 @@ func testSortFunc(f sort.SortFunc, t *testing.T) {
 
 func TestInsertSort(t *testing.T) { testSortFunc(sort.InsertSort, t) }
 func TestBubbleSort(t *testing.T) { testSortFunc(sort.BubbleSort, t) }
+func TestMergeSort(t *testing.T)  { testSortFunc(sort.MergeSort, t) }
 
 func benchmarkSortFunc(f sort.SortFunc, size int, b *testing.B) {
 	for i := 0; i < b.N; i++ {
@@ -39,6 +40,8 @@ func benchmarkSortFunc(f sort.SortFunc, size int, b *testing.B) {
 func BenchmarkReference10(b *testing.B)   { benchmarkSortFunc(original.Ints, 10, b) }
 func BenchmarkInsertSort10(b *testing.B)  { benchmarkSortFunc(sort.InsertSort, 10, b) }
 func BenchmarkBubbleSort10(b *testing.B)  { benchmarkSortFunc(sort.BubbleSort, 10, b) }
+func BenchmarkMergeSort10(b *testing.B)   { benchmarkSortFunc(sort.BubbleSort, 10, b) }
 func BenchmarkReference100(b *testing.B)  { benchmarkSortFunc(original.Ints, 100, b) }
 func BenchmarkInsertSort100(b *testing.B) { benchmarkSortFunc(sort.InsertSort, 100, b) }
 func BenchmarkBubbleSort100(b *testing.B) { benchmarkSortFunc(sort.BubbleSort, 100, b) }
+func BenchmarkMergeSort100(b *testing.B)  { benchmarkSortFunc(sort.BubbleSort, 100, b) }

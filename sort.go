@@ -31,3 +31,44 @@ func BubbleSort(in []int) {
 		}
 	}
 }
+
+func MergeSort(in []int) {
+	q := len(in) / 2
+	if q == 0 {
+		return
+	}
+	left := in[0:q]
+	right := in[q:len(in)]
+	MergeSort(left)
+	MergeSort(right)
+
+	// merge left and right
+	leftTemp := make([]int, len(left))
+	copy(leftTemp, left)
+	rightTemp := make([]int, len(right))
+	copy(rightTemp, right)
+
+	var i, j, k int
+	for i < len(leftTemp) && j < len(rightTemp) {
+		if leftTemp[i] < rightTemp[j] {
+			in[k] = leftTemp[i]
+			i++
+		} else {
+			in[k] = rightTemp[j]
+			j++
+		}
+		k++
+	}
+
+	for i < len(leftTemp) {
+		in[k] = leftTemp[i]
+		i++
+		k++
+	}
+	for j < len(rightTemp) {
+		in[k] = rightTemp[j]
+		j++
+		k++
+	}
+
+}
