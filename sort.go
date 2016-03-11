@@ -32,6 +32,32 @@ func BubbleSort(in []int) {
 	}
 }
 
+func QuickSort(in []int) {
+	copy(in, quickSort(in))
+}
+
+func quickSort(in []int) []int {
+	if len(in) <= 1 {
+		return in
+	}
+	p := in[0]
+	left := make([]int, 0, len(in))
+	right := make([]int, 0, len(in))
+	eq := make([]int, 0, len(in))
+	for _, v := range in {
+		switch {
+		case v < p:
+			left = append(left, v)
+		case v == p:
+			eq = append(eq, v)
+		case v > p:
+			right = append(right, v)
+		}
+	}
+
+	return append(quickSort(left), append(quickSort(eq), quickSort(right)...)...)
+}
+
 func MergeSort(in []int) {
 	q := len(in) / 2
 	if q == 0 {
